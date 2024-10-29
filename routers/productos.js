@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Añadir nuevo producto
-Router.post('/add', (req, res) => {
+router.post('/add', (req, res) => {
   const nuevoProducto = req.body;
   productos.push(nuevoProducto);
   res.status(201).json(nuevoProducto);
@@ -30,8 +30,9 @@ Router.post('/add', (req, res) => {
 
 // Actualizar producto por ID
 router.put('/actualizar/:id', (req, res) => {
-  const productoId = parseInt(req.params.id);
+  const productoId = parseInt(req.params.id, 10); // Asegúrate de que esté bien definido
   const productoIndex = productos.findIndex(p => p.id === productoId);
+
   if (productoIndex !== -1) {
     productos[productoIndex] = { ...productos[productoIndex], ...req.body };
     res.json(productos[productoIndex]);
@@ -39,6 +40,7 @@ router.put('/actualizar/:id', (req, res) => {
     res.status(404).send('Producto no encontrado');
   }
 });
+
 
 // Eliminar producto por ID
 router.delete('/eliminar/:id', (req, res) => {
