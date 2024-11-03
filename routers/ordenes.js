@@ -3,7 +3,7 @@ const router = express.Router();
 
 let ordenes = [
   { id: 1, producto: 'Producto 1', cantidad: 2 },
-  { id: 2, producto: 'Producto 2', cantidad: 1 }
+  { id: 2, producto: 'Producto 2', cantidad: 1000 }
 ];
 
 // Obtener todas las órdenes
